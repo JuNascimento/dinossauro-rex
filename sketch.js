@@ -76,7 +76,7 @@ function preload(){
   trexCorrendo = loadAnimation("trex1.png", "trex3.png", "trex4.png")
   trexBateu=loadAnimation("trex_collided.png")
   
-  imagemchao=loadAnimation("ground2.png", "ground2.png"); 
+  imagemchao=loadAnimation("ground2.png", "ground2.png", "ground2.png"); 
   imagemNuvem=loadImage("cloud.png");
   
   obstaculo1 = loadImage("obstacle1.png");
@@ -95,10 +95,6 @@ function preload(){
 }
 
 function setup() {
-  if (larguraJogo > 600) {
-    larguraJogo = 600;
-  }
-
   createCanvas(larguraJogo, 200) // MUDEI
 
   trex = createSprite(50, 155, 15, 50);
@@ -130,7 +126,6 @@ function setup() {
 }
 
 function draw() {
-  console.log('ta vindo o q aqui', touches.length)
   background('white');
   text('Pontuação: ' + pontuacao, larguraJogo - 100,50); // MUDEI
   
@@ -148,6 +143,7 @@ function draw() {
     if( chao.x<0){
       chao.x=chao.width/2
     }
+
     
     if ((touches.length > 0 || keyDown('space')) && trex.y>=100) { // MUDEI
       trex.velocityY = -13;
@@ -182,8 +178,6 @@ function draw() {
   
   trex.velocityY = trex.velocityY + 1;
   trex.collide(chaoInvisivel);
-  
-  
 
   drawSprites();
 }
